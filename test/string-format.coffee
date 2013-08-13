@@ -79,6 +79,18 @@ describe 'String::format', ->
     text.format(new Array 1).should.equal '<a href="/inbox">view message</a>'
     text.format(new Array 2).should.equal '<a href="/inbox">view messages</a>'
 
+  it 'asdf', ->
+    '{:f}'.format(3.14).should.equal '3.140000'
+    '{:.0f}'.format(3.14).should.equal '3'
+    '{:.1f}'.format(3.14).should.equal '3.1'
+    '{:.2f}'.format(3.14).should.equal '3.14'
+    '{:.3f}'.format(3.14).should.equal '3.140'
+
+  it 'asdf', ->
+    '{:+f}; {:+f}'.format(3.14, -3.14).should.equal '+3.140000; -3.140000'
+    '{: f}; {: f}'.format(3.14, -3.14).should.equal ' 3.140000; -3.140000'
+    '{:-f}; {:-f}'.format(3.14, -3.14).should.equal '3.140000; -3.140000'
+
   it "passes applicable tests from Python's test suite", ->
     ''.format(null).should.equal ''
     'abc'.format(null).should.equal 'abc'
